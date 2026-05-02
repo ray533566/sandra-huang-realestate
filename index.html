@@ -678,7 +678,7 @@
   <ul class="nav-links">
     <li><a href="#story">關於我</a></li>
     <li><a href="#history">銷售歷程</a></li>
-    <li><a href="#listings">物件介紹</a></li>
+    <li><a href="https://sites.google.com/view/sandra168" target="_blank">物件介紹</a></li>
     <li><a href="#contact">聯絡我</a></li>
   </ul>
 </nav>
@@ -801,90 +801,27 @@
 </section>
 
 <!-- LISTINGS -->
-<section class="listings-section" id="listings">
-  <div class="listings-header">
-    <div>
-      <div class="section-label">Current Listings</div>
-      <h2 class="listings-heading">精選<em>銷售物件</em></h2>
-    </div>
-    <a href="#contact" class="listings-link">查詢更多物件</a>
-  </div>
-
-  <div class="property-card">
-    <div class="property-main">
-      <div class="property-image-primary">
-        <img src="room2.jpg" alt="主臥室">
-        <div class="property-tag">熱門推薦</div>
-      </div>
-      <div class="property-info">
-        <div>
-          <div class="property-type">Studio Apartment · 套房</div>
-          <h3 class="property-name">新北七張捷運站正樓上<br>精品套房</h3>
-          <p class="property-address">📍 新北市新店區 · 七張捷運站正樓上<br>全裝潢 · 拎包即住</p>
-          <div class="property-features">
-            <div class="feature-item">
-              <span class="feature-icon">🛏</span> 一房一衛
-            </div>
-            <div class="feature-item">
-              <span class="feature-icon">🍳</span> 獨立廚房
-            </div>
-            <div class="feature-item">
-              <span class="feature-icon">🌊</span> 高樓景觀
-            </div>
-            <div class="feature-item">
-              <span class="feature-icon">🏠</span> 全家具配備
-            </div>
-            <div class="feature-item">
-              <span class="feature-icon">🔄</span> 洗衣機
-            </div>
-            <div class="feature-item">
-              <span class="feature-icon">❄️</span> 冷氣冰箱
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="property-divider"></div>
-          <form id="bookingForm" onsubmit="submitBooking(event)" style="display:flex;flex-direction:column;gap:0.8rem;">
-            <div style="font-family:'Noto Serif TC',serif;font-size:0.85rem;font-weight:600;color:var(--ink);margin-bottom:0.2rem;">預約看屋</div>
-            <input type="text" id="f-name" placeholder="您的姓名 *" required
-              style="border:1px solid var(--mist);padding:0.7rem 1rem;font-family:'Noto Serif TC',serif;font-size:0.85rem;outline:none;transition:border 0.2s;"
-              onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--mist)'">
-            <input type="tel" id="f-phone" placeholder="聯絡電話 *" required
-              style="border:1px solid var(--mist);padding:0.7rem 1rem;font-family:'Noto Serif TC',serif;font-size:0.85rem;outline:none;transition:border 0.2s;"
-              onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--mist)'">
-            <input type="text" id="f-time" placeholder="希望看屋時間（例：週六下午）"
-              style="border:1px solid var(--mist);padding:0.7rem 1rem;font-family:'Noto Serif TC',serif;font-size:0.85rem;outline:none;transition:border 0.2s;"
-              onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--mist)'">
-            <textarea id="f-note" placeholder="備註（需求說明）" rows="2"
-              style="border:1px solid var(--mist);padding:0.7rem 1rem;font-family:'Noto Serif TC',serif;font-size:0.85rem;outline:none;resize:none;transition:border 0.2s;"
-              onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--mist)'"></textarea>
-            <button type="submit" id="submitBtn"
-              style="background:var(--terracotta);color:white;border:none;font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:0.9rem 2rem;cursor:pointer;transition:all 0.3s;text-align:left;">
-              立即預約看屋 →
-            </button>
-            <div id="formMsg" style="display:none;font-size:0.82rem;font-family:'Noto Serif TC',serif;padding:0.6rem 1rem;"></div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <div class="property-gallery">
-      <div class="gallery-item">
-        <img src="room3.jpg" alt="室內全景">
-        <div class="gallery-label">室內空間</div>
-      </div>
-      <div class="gallery-item">
-        <img src="view.jpg" alt="城市景觀">
-        <div class="gallery-label">城市視野</div>
-      </div>
-      <div class="gallery-item">
-        <img src="bathroom.jpg" alt="衛浴">
-        <div class="gallery-label">獨立衛浴</div>
-      </div>
-      <div class="gallery-item">
-        <img src="kitchen.jpg" alt="廚房">
-        <div class="gallery-label">廚房設備</div>
-      </div>
-    </div>
+<section class="listings-section" id="listings" style="text-align:center; padding: 7rem 5rem;">
+  <div class="section-label" style="justify-content:center;">Current Listings</div>
+  <h2 class="listings-heading" style="margin-bottom:1rem;">精選<em>銷售物件</em></h2>
+  <p style="font-size:0.95rem;color:#888;font-weight:300;line-height:2;margin-bottom:3rem;">
+    所有最新物件、照片與詳細資訊，<br>請前往我們的物件專頁查看。
+  </p>
+  <a href="https://sites.google.com/view/sandra168" target="_blank"
+    style="display:inline-flex;align-items:center;gap:1rem;
+    font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:700;
+    letter-spacing:0.3em;text-transform:uppercase;
+    color:white;background:var(--terracotta);
+    padding:1.2rem 3rem;text-decoration:none;
+    transition:all 0.3s;">
+    查看所有物件 →
+  </a>
+  <div style="margin-top:1.5rem;">
+    <a href="https://sites.google.com/view/sandra168" target="_blank"
+      style="font-family:'Montserrat',sans-serif;font-size:0.65rem;
+      color:#aaa;letter-spacing:0.15em;text-decoration:none;">
+      sites.google.com/view/sandra168
+    </a>
   </div>
 </section>
 
