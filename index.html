@@ -844,12 +844,26 @@
         </div>
         <div>
           <div class="property-divider"></div>
-          <div class="property-price">月租行情</div>
-          <span class="property-price-value">洽詢</span>
-          <span class="property-price-unit">/ 歡迎來電詢問</span>
-          <div style="margin-top:1.5rem">
-            <a href="tel:0919631068" style="display:inline-block;background:var(--terracotta);color:white;font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:0.9rem 2rem;text-decoration:none;transition:all 0.3s;">立即預約看屋 →</a>
-          </div>
+          <form id="bookingForm" onsubmit="submitBooking(event)" style="display:flex;flex-direction:column;gap:0.8rem;">
+            <div style="font-family:'Noto Serif TC',serif;font-size:0.85rem;font-weight:600;color:var(--ink);margin-bottom:0.2rem;">預約看屋</div>
+            <input type="text" id="f-name" placeholder="您的姓名 *" required
+              style="border:1px solid var(--mist);padding:0.7rem 1rem;font-family:'Noto Serif TC',serif;font-size:0.85rem;outline:none;transition:border 0.2s;"
+              onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--mist)'">
+            <input type="tel" id="f-phone" placeholder="聯絡電話 *" required
+              style="border:1px solid var(--mist);padding:0.7rem 1rem;font-family:'Noto Serif TC',serif;font-size:0.85rem;outline:none;transition:border 0.2s;"
+              onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--mist)'">
+            <input type="text" id="f-time" placeholder="希望看屋時間（例：週六下午）"
+              style="border:1px solid var(--mist);padding:0.7rem 1rem;font-family:'Noto Serif TC',serif;font-size:0.85rem;outline:none;transition:border 0.2s;"
+              onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--mist)'">
+            <textarea id="f-note" placeholder="備註（需求說明）" rows="2"
+              style="border:1px solid var(--mist);padding:0.7rem 1rem;font-family:'Noto Serif TC',serif;font-size:0.85rem;outline:none;resize:none;transition:border 0.2s;"
+              onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--mist)'"></textarea>
+            <button type="submit" id="submitBtn"
+              style="background:var(--terracotta);color:white;border:none;font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:0.9rem 2rem;cursor:pointer;transition:all 0.3s;text-align:left;">
+              立即預約看屋 →
+            </button>
+            <div id="formMsg" style="display:none;font-size:0.82rem;font-family:'Noto Serif TC',serif;padding:0.6rem 1rem;"></div>
+          </form>
         </div>
       </div>
     </div>
@@ -928,5 +942,45 @@
   <div class="footer-copy">© 2025 Chinatrust Real Estate Co. All rights reserved.</div>
 </footer>
 
+<script>
+  const SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+
+  async function submitBooking(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const msg = document.getElementById('formMsg');
+    btn.textContent = '送出中...';
+    btn.disabled = true;
+
+    const data = {
+      name:  document.getElementById('f-name').value,
+      phone: document.getElementById('f-phone').value,
+      time:  document.getElementById('f-time').value,
+      note:  document.getElementById('f-note').value,
+    };
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      msg.style.display = 'block';
+      msg.style.background = '#f0faf0';
+      msg.style.color = '#2a7a2a';
+      msg.textContent = '✓ 預約成功！瀞儀將盡快與您聯絡。';
+      document.getElementById('bookingForm').reset();
+    } catch {
+      msg.style.display = 'block';
+      msg.style.background = '#fff0f0';
+      msg.style.color = '#a00';
+      msg.textContent = '送出失敗，請直接來電 0919-631-068。';
+    } finally {
+      btn.textContent = '立即預約看屋 →';
+      btn.disabled = false;
+    }
+  }
+</script>
 </body>
 </html>
