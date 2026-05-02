@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>精選銷售物件 — 黃瀞儀 Sandra Huang</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400&family=Montserrat:wght@200;400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --gold: #c8a96e; --gold-light: #e8d5a3; --gold-dark: #8a6c3a;
+    --ink: #1a1610; --cream: #faf7f2; --warm-white: #f5f0e8;
+    --terracotta: #c85a2a; --mist: #e8e4dc;
+  }
+  body {
+    font-family: 'Noto Serif TC', serif;
+    background: var(--cream);
+    color: var(--ink);
+    padding: 2rem;
+  }
+  .section-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.45em; text-transform: uppercase;
+    color: var(--terracotta); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::after { content: ''; width: 40px; height: 1px; background: var(--terracotta); }
+  .listings-heading {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700;
+    color: var(--ink); margin-bottom: 2rem;
+  }
+  .listings-heading em { font-style: normal; color: var(--terracotta); }
+
+  .property-card {
+    background: white;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(26,22,16,0.08);
+    border-radius: 2px;
+  }
+  .property-main {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+  }
+  .property-image-primary {
+    height: 420px; overflow: hidden; position: relative;
+  }
+  .property-image-primary img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .property-tag {
+    position: absolute; top: 1.2rem; left: 1.2rem;
+    background: var(--terracotta); color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+  }
+  .property-info {
+    padding: 2.5rem; display: flex; flex-direction: column;
+    justify-content: space-between; border-top: 4px solid var(--gold);
+  }
+  .property-type {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.62rem; font-weight: 700;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold-dark); margin-bottom: 0.6rem;
+  }
+  .property-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--ink); line-height: 1.5; margin-bottom: 0.6rem;
+  }
+  .property-address {
+    font-size: 0.82rem; color: #888; line-height: 1.8;
+    font-weight: 300; margin-bottom: 1.2rem;
+  }
+  .property-features {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0.7rem; margin-bottom: 1.5rem;
+  }
+  .feature-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.8rem; color: #555;
+  }
+  .property-divider { height: 1px; background: var(--mist); margin: 1rem 0; }
+  .agent-bar {
+    background: var(--ink); padding: 1.2rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .agent-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1rem; font-weight: 700; color: var(--gold);
+  }
+  .agent-phone {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 300; color: var(--gold-light);
+    letter-spacing: 0.08em;
+  }
+  .agent-btn {
+    display: inline-block;
+    background: var(--terracotta); color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 0.8rem 1.8rem; text-decoration: none;
+    transition: background 0.3s;
+  }
+  .agent-btn:hover { background: #a84520; }
+  .property-gallery {
+    display: grid; grid-template-columns: repeat(4, 1fr); height: 160px;
+  }
+  .gallery-item { overflow: hidden; position: relative; }
+  .gallery-item img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.4s; filter: brightness(0.93);
+  }
+  .gallery-item:hover img { transform: scale(1.07); filter: brightness(1); }
+  .gallery-item + .gallery-item { border-left: 2px solid white; }
+  .gallery-label {
+    position: absolute; bottom: 0.4rem; left: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.52rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: white; background: rgba(26,22,16,0.55);
+    padding: 0.15rem 0.4rem; backdrop-filter: blur(4px);
+  }
+  .full-site-link {
+    text-align: center; margin-top: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.2em;
+  }
+  .full-site-link a {
+    color: var(--gold-dark); text-decoration: none;
+    border-bottom: 1px solid var(--gold-dark); padding-bottom: 2px;
+  }
+  @media (max-width: 700px) {
+    body { padding: 1rem; }
+    .property-main { grid-template-columns: 1fr; }
+    .property-image-primary { height: 260px; }
+    .property-gallery { grid-template-columns: repeat(2, 1fr); height: 200px; }
+    .agent-bar { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="section-label">Current Listings</div>
+<h2 class="listings-heading">精選<em>銷售物件</em></h2>
+
+<div class="property-card">
+  <div class="property-main">
+    <div class="property-image-primary">
+      <img src="https://ray533566.github.io/sandra-huang-realestate/room2.jpg" alt="主臥室">
+      <div class="property-tag">熱門推薦</div>
+    </div>
+    <div class="property-info">
+      <div>
+        <div class="property-type">Studio Apartment · 套房</div>
+        <h3 class="property-name">新北七張捷運站正樓上<br>精品套房</h3>
+        <p class="property-address">📍 新北市新店區 · 七張捷運站正樓上<br>全裝潢 · 拎包即住</p>
+        <div class="property-features">
+          <div class="feature-item">🛏 一房一衛</div>
+          <div class="feature-item">🍳 獨立廚房</div>
+          <div class="feature-item">🌆 高樓景觀</div>
+          <div class="feature-item">🏠 全家具配備</div>
+          <div class="feature-item">🔄 洗衣機</div>
+          <div class="feature-item">❄️ 冷氣冰箱</div>
+        </div>
+      </div>
+      <div>
+        <div class="property-divider"></div>
+        <div style="font-size:0.8rem;color:#999;margin-bottom:0.3rem;">歡迎來電洽詢</div>
+        <div style="font-family:'Noto Serif TC',serif;font-size:1.5rem;font-weight:700;color:var(--terracotta);">洽詢</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="agent-bar">
+    <div>
+      <div class="agent-name">黃瀞儀 Sandra Huang｜中信房屋 台北八德加盟店</div>
+    </div>
+    <div class="agent-phone">0919 — 631 — 068</div>
+    <a href="tel:0919631068" class="agent-btn">立即預約看屋 →</a>
+  </div>
+
+  <div class="property-gallery">
+    <div class="gallery-item">
+      <img src="https://ray533566.github.io/sandra-huang-realestate/room3.jpg" alt="室內全景">
+      <div class="gallery-label">室內空間</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://ray533566.github.io/sandra-huang-realestate/view.jpg" alt="城市景觀">
+      <div class="gallery-label">城市視野</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://ray533566.github.io/sandra-huang-realestate/bathroom.jpg" alt="衛浴">
+      <div class="gallery-label">獨立衛浴</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://ray533566.github.io/sandra-huang-realestate/kitchen.jpg" alt="廚房">
+      <div class="gallery-label">廚房設備</div>
+    </div>
+  </div>
+</div>
+
+<div class="full-site-link">
+  <a href="https://ray533566.github.io/sandra-huang-realestate/" target="_blank">▶ 查看完整網站 & 預約看屋表單</a>
+</div>
+
+</body>
+</html>
